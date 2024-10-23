@@ -2,3 +2,23 @@
 path = "home.py"
 name = "HOME"
 icon = "🏠"
+
+[[pages]]
+path = "about_us.py"
+name = "About Us"
+icon = "🏠"
+
+[[pages]]
+path = "contact_us.py"
+name = "Contact Us"
+icon = "🏠"
+
+[[pages]]
+path = "Recipe.py"
+name = "Lets Him Cook"
+icon = "🏠"
+
+[[pages]]
+path = "Make_menu.py"
+name = "Make Your Own Menu"
+icon = "🏠"
