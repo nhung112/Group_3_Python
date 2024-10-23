@@ -27,4 +27,6 @@ def display_home():
     set_background()
     st.write("hello")
 
+    st.balloons()
+
 display_home()
