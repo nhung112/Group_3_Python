@@ -27,6 +27,7 @@ def display_home():
     set_background()
     st.write("hello")
 
-    st.balloons()
+    if st.button("Press me"):
+        st.write('HIIIIIIIIIIIIIIII')
 
 display_home()
