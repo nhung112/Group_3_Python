@@ -1,7 +1,7 @@
 [[pages]]
 path = "home.py"
-name = "HOME"
-icon = "🏠"
+name = "CALM KITCHEN"
+icon = ""
 
 [[pages]]
 path = "about_us.py"
