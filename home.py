@@ -23,6 +23,7 @@ def set_background():
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
 def display_home():
+    
     st.markdown("""
     <div style='width: 100px; height: 2px; background-color: white; margin: 10px 0;'></div>
     <div style='text-align: left; font-size: 36px; font-weight: bold;'>
@@ -33,7 +34,5 @@ def display_home():
     """, unsafe_allow_html=True)
     set_background()
 
-    if st.button("Press me"):
-        st.write('HIIIIIIIIIIIIIIII')
 
 display_home()
