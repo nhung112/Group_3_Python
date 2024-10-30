@@ -26,4 +26,3 @@ if selected_ingredients:
     st.write("Nguyên liệu đã chọn:", selected_ingredients)
 else:
     st.write("Hãy chọn các nguyên liệu bạn có sẵn.")
-#fhjvkb
