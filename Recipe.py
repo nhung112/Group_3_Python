@@ -30,4 +30,3 @@ if selected_ingredients:
     st.markdown(selected_list)
 else:
     st.write("Hãy chọn các nguyên liệu bạn có sẵn.")
-#fhjvkb
