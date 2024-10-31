@@ -1,8 +1,7 @@
 import streamlit as st
 
-def display_about_info():
-    st.title("About Us - CALM")
-    st.write("Bạn có bao giờ đứng trước gian bếp với hàng tá nguyên liệu mà không biết làm món gì? Chào mừng đến với CALM, nơi bạn có thể tìm thấy vô số công thức nấu ăn đa dạng. Mỗi công thức đều được trình bày chi tiết, kèm theo hình ảnh minh họa và mẹo nhỏ giúp bạn dễ dàng thực hiện dù là lần đầu vào bếp. Đặc biệt, với giao diện thân thiện và các công cụ tìm kiếm tiện lợi, bạn có thể chọn món theo nguyên liệu và tình trạng sức khỏe. Hãy để mỗi bữa ăn trở thành một trải nghiệm thư giãn và khám phá từng món ăn mỗi ngày cùng chúng tôi!")
+st.title("About Us - CALM")
+st.write("Bạn có bao giờ đứng trước gian bếp với hàng tá nguyên liệu mà không biết làm món gì? Chào mừng đến với CALM, nơi bạn có thể tìm thấy vô số công thức nấu ăn đa dạng. Mỗi công thức đều được trình bày chi tiết, kèm theo hình ảnh minh họa và mẹo nhỏ giúp bạn dễ dàng thực hiện dù là lần đầu vào bếp. Đặc biệt, với giao diện thân thiện và các công cụ tìm kiếm tiện lợi, bạn có thể chọn món theo nguyên liệu và tình trạng sức khỏe. Hãy để mỗi bữa ăn trở thành một trải nghiệm thư giãn và khám phá từng món ăn mỗi ngày cùng chúng tôi!")
 
 st.header("Our Sloogan |n_n|")
 st.write('"Health - Nutrition - Happiness"')
