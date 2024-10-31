@@ -1,6 +1,7 @@
 # PART 1
 import streamlit as st
 import json
+import pandas as pd
 
 with open("ingredients.json", "r", encoding="utf-8") as file:
     ingredients_data = json.load(file)
@@ -22,7 +23,7 @@ for category, items in ingredients_data.items():
         if cols[i % 5].checkbox(ingredient, key=f"{category}-{ingredient}"):
             selected_ingredients.append(ingredient)
 
-# Hiển thị các nguyên liệu đã chọn dưới dạng danh sách không có số thứ tự
+# Hiển thị các nguyên liệu đã chọn
 if selected_ingredients:
     st.write("Nguyên liệu đã chọn:")
     # Tạo danh sách bằng Markdown
@@ -30,3 +31,4 @@ if selected_ingredients:
     st.markdown(selected_list)
 else:
     st.write("Hãy chọn các nguyên liệu bạn có sẵn.")
+
