@@ -2,10 +2,10 @@
 import streamlit as st
 import json
 
-
 with open("ingredients.json", "r", encoding="utf-8") as file:
     ingredients_data = json.load(file)
 
+# Tạo tiêu đề cho ứng dụng
 st.title("Chọn Nguyên Liệu")
 
 # Khởi tạo danh sách để lưu các nguyên liệu đã chọn
@@ -18,11 +18,15 @@ for category, items in ingredients_data.items():
 
     # Duyệt qua từng nguyên liệu và tạo các nút chọn
     for i, ingredient in enumerate(items):
-        if cols[i % 5].checkbox(ingredient):
+        # Thêm `key` duy nhất cho mỗi checkbox
+        if cols[i % 5].checkbox(ingredient, key=f"{category}-{ingredient}"):
             selected_ingredients.append(ingredient)
 
-# Hiển thị các nguyên liệu đã chọn
+# Hiển thị các nguyên liệu đã chọn dưới dạng danh sách không có số thứ tự
 if selected_ingredients:
-    st.write("Nguyên liệu đã chọn:", selected_ingredients)
+    st.write("Nguyên liệu đã chọn:")
+    # Tạo danh sách bằng Markdown
+    selected_list = "\n".join([f"- {ingredient}" for ingredient in selected_ingredients])
+    st.markdown(selected_list)
 else:
     st.write("Hãy chọn các nguyên liệu bạn có sẵn.")
