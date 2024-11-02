@@ -1,4 +1,4 @@
-# PART 1
+#PART 1
 import streamlit as st
 import json
 
@@ -6,25 +6,56 @@ import json
 with open("ingredients.json", "r", encoding="utf-8") as file:
     ingredients_data = json.load(file)
 
+st.markdown("""
+    <style>
+    .ingredient-box {
+        display: inline-block;
+        background-color: #f0f8ff;
+        color: #333;
+        border: 2px solid #90ee90;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 5px;
+        text-align: center;
+        font-weight: bold;
+        width: 100%; 
+        font-size: 18px:
+    }
+    .ingredient-box input[type="checkbox"] {
+        accent-color: #4CAF50; /* Checkbox color */
+        transform: scale(1.2); /* Make the checkbox slightly larger */
+    }
+    .section-heading {
+        font-size: 24px;
+        color: #4CAF50;
+        font-weight: bold;
+        margin-top: 20px;
+        text-align: center;
+    }
+    .category-title {
+        font-size: 20px;
+        color: #333;
+        margin-top: 15px;
+        text-align: center;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+col1, col2 = st.columns([3, 4])
+
+with col1:
+    st.markdown('<div class="section-heading">Chọn Nguyên Liệu</div>', unsafe_allow_html=True)
+    selected_ingredients = {}
     
-st.title("Chọn Nguyên Liệu")
+    for category, items in ingredients_data.items():
+        st.markdown(f"<h3 class='category-title'>{category}</h3>", unsafe_allow_html=True)
+        
+        ingredient_columns = st.columns(3)
+        for i, ingredient in enumerate(items):
+            with ingredient_columns[i % 3]:
+                selected_ingredients[ingredient] = st.checkbox(ingredient, key=ingredient)
 
-# Khởi tạo danh sách để lưu các nguyên liệu đã chọn
-selected_ingredients = []
+    chosen_ingredients = [ingredient for ingredient, selected in selected_ingredients.items() if selected]
 
-# Duyệt qua từng loại nguyên liệu trong JSON
-for category, items in ingredients_data.items():
-    st.subheader(category)  # Tạo tiêu đề cho mỗi nhóm nguyên liệu
-    cols = st.columns(5)  # Số cột trong lưới nút (tùy chỉnh theo nhu cầu)
-
-    # Duyệt qua từng nguyên liệu và tạo các nút chọn
-    for i, ingredient in enumerate(items):
-        if cols[i % 5].checkbox(ingredient):
-            selected_ingredients.append(ingredient)
-
-# Hiển thị các nguyên liệu đã chọn
-if selected_ingredients:
-    st.write("Nguyên liệu đã chọn:", selected_ingredients)
-else:
-    st.write("Hãy chọn các nguyên liệu bạn có sẵn.")
-
+with col2:
+    st.markdown('<div class="section-heading">Gợi Ý Món Ăn</div>', unsafe_allow_html=True) 
