@@ -72,7 +72,7 @@
         "nấm linh chi",
         "nấm kim châm",
         "rau mồng tơi"
-
+        
     ],
     "Hoa quả": [
         "chuối",
@@ -108,5 +108,11 @@
         "sữa chua",
         "kem tươi",
         "whipping cream"
+    ],
+    "Bệnh lý":[
+        "Tiểu đường",
+        "Huyết áp cao",
+        "Dạ dày",
+        "Goat"
     ]
 }
