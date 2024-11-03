@@ -1,11 +1,11 @@
+#PART 1
 import streamlit as st
 import json
 
-# Load the ingredients data
+
 with open("ingredients.json", "r", encoding="utf-8") as file:
     ingredients_data = json.load(file)
-
-# Apply custom styling
+medical_conditions = ["Tiểu đường", "Huyết áp cao", "Dạ dày", "Gout"]
 st.markdown("""
     <style>
     .ingredient-box {
@@ -25,43 +25,32 @@ st.markdown("""
         accent-color: #4CAF50; /* Checkbox color */
         transform: scale(1.2); /* Make the checkbox slightly larger */
     }
-    .section-heading {
-        font-size: 24px;
-        color: #333; /* Gray color */
-        font-weight: bold;
-        margin-top: 20px;
-        text-align: center;
-    }
-    .category-title {
-        font-size: 20px;
-        color: #333;
-        margin-top: 15px;
-        text-align: center;
-    }
     </style>
 """, unsafe_allow_html=True)
 
+selected_ingredients = {}
+selected_conditions = []
 with st.sidebar:
-    st.markdown('<div class="section-heading">Chọn Nguyên Liệu</div>', unsafe_allow_html=True)
-    selected_ingredients = {}
-    
+    st.title("Chọn Nguyên Liệu")
     for category, items in ingredients_data.items():
-        with st.sidebar.expander(f"**{category}**", expanded=True):
-            selected_ingredients[category] = []
-            
-            ingredient_columns = st.columns(3)
-            for i, ingredient in enumerate(items):
-                with ingredient_columns[i % 3]:  # Distribute ingredients in three columns
-                    if st.checkbox(ingredient, key=ingredient):
-                        selected_ingredients[category].append(ingredient)
-
-    st.write("")
-    col1, col2 = st.columns([2, 1])  
-    with col1:
-        st.write("")
-    with col2:
-        if st.button("Xác nhận", key="confirm_button"):
-            chosen_ingredients = [ingredient for category in selected_ingredients.values() for ingredient in category]
+        st.markdown(f"**{category}**")
+        selected_ingredients[category] = []
         
-    
-st.markdown('<div class="section-heading">Gợi Ý Món Ăn</div>', unsafe_allow_html=True)
+        ingredient_columns = st.columns(3)
+        for i, ingredient in enumerate(items):
+            with ingredient_columns[i % 3]:
+                if st.checkbox(ingredient, key=f"{category}_{ingredient}"):
+                    selected_ingredients[category].append(ingredient)
+
+    st.title("Bệnh lý")
+    condition_columns = st.columns(2)
+    for i, condition in enumerate(medical_conditions):
+        with condition_columns[i % 2]:
+            if st.checkbox(condition, key=f"condition_{condition}"):
+                selected_conditions.append(condition)
+
+    button_column = st.columns([2, 1])  
+    with button_column[1]: 
+        if st.button("Xác nhận", key="confirm_button"):
+            chosen_ingredients = {category: items for category, items in selected_ingredients.items() if items} 
+            
