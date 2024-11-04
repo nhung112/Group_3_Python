@@ -14,8 +14,8 @@ def set_background():
         <style>
         [data-testid="stAppViewContainer"] > .main {{
         background-image: url("data:image/png;base64,{img}");
-        background-size: 100%;
-        background-repeat: no-repeat;
+        background-size: cover;
+        background-repeat: repeat;
         background-attachment: local;
         }}
         </style>

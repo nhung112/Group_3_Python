@@ -22,8 +22,8 @@ if Submit:
         st.success("Form submitted successfully")
 
 st.title("Contact us:")
-facebook_url = "https://www.facebook.com/profile.php?id=100056612376153"  
-instagram_url = "https://www.instagram.com/dchuy_006/?igsh=MTA0bHY3aXBucTdyag%3D%3D#"  
+facebook_url = "https://www.facebook.com/profile.php?id=61567855092141&is_tour_dismissed"  
+instagram_url = "https://www.instagram.com/_calm_kitchen_/"  
 st.markdown(f"""
     <div style="display: flex; gap: 10px;">
         <a href="{facebook_url}" target="_blank">

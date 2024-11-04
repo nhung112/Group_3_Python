@@ -2,6 +2,30 @@
 import streamlit as st
 import json
 import pandas as pd
+import os
+import base64
+
+@st.cache_data
+def get_img_as_base64(file):
+    with open(file, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+def set_background():
+    img = get_img_as_base64("home3.png")
+    page_bg_img = f"""
+        <style>
+        [data-testid="stAppViewContainer"] > .main {{
+        background-image: url("data:image/png;base64,{img}");
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-attachment: local;
+        }}
+        </style>
+        """ 
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+
+set_background()
 
 with open("ingredients.json", "r", encoding="utf-8") as file:
     ingredients_data = json.load(file)
