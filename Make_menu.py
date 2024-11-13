@@ -103,7 +103,6 @@ def generate_menu(duration, menu):
     if duration == "1 bữa":
         return random.sample(menu, 2)  # Two unique dishes for a single meal
     elif duration == "1 ngày":
-        # Ensure at least 2 items for Breakfast
         if breakfast_menu:  # Check if there are breakfast options available
             daily_structure["Breakfast"] = random.sample(breakfast_menu, 1)
         daily_structure["Lunch"] = random.sample(menu, 2)
@@ -114,7 +113,7 @@ def generate_menu(duration, menu):
         for _ in range(7):
             day = {}
             if breakfast_menu:
-                day["Breakfast"] = random.sample(breakfast_menu, 1)  # Ensure at least 2 items
+                day["Breakfast"] = random.sample(breakfast_menu, 1)  
             day["Lunch"] = random.sample(menu, 2)
             day["Dinner"] = random.sample(menu, 2)
             weekly_menu.append(day)
@@ -124,7 +123,7 @@ def generate_menu(duration, menu):
         for _ in range(30):
             day = {}
             if breakfast_menu:
-                day["Breakfast"] = random.sample(breakfast_menu, 1)  # Ensure at least 2 items
+                day["Breakfast"] = random.sample(breakfast_menu, 1) 
             day["Lunch"] = random.sample(menu, 2)
             day["Dinner"] = random.sample(menu, 2)
             monthly_menu.append(day)

@@ -88,15 +88,22 @@ if display:
             with st.container():
                 st.markdown(
                     f"""
-                    <div style="background-color:#e0f7fa; padding: 20px; border-radius: 10px; 
+                    <div style="background-color: #fff2c9; padding: 20px; border-radius: 10px; 
                                 border: 2px solid #b0e0e6;">
-                        <h3 style="color:#333;">{row['Tên món']}</h3>
-                        <p><strong>Nguyên liệu chính:</strong> {row['Nguyên liệu']}</p>
-                        <p><strong>Thời gian:</strong> {row['Time']}</p>
-                        <p><strong>Calo:</strong> {row[8]} kcal</p>
-                        <a href="{link_create(row['Tên món'])}" target="_blank">
-                            <button style="padding: 8px 12px; color: white; background-color: #4CAF50; 
-                                        border: none; border-radius: 5px; cursor: pointer;">
+                        <h3 style="color: #f89b28; margin-bottom: 14px;">{row['Tên món']}</h3>
+                        <p style="color: #f89b28; margin: 8px 0;">
+                            <strong>Nguyên liệu chính:</strong> {row['Nguyên liệu']}
+                        </p>
+                        <p style="color: #f89b28; margin: 8px 0;">
+                            <strong>Thời gian:</strong> {row['Time']}
+                        </p>
+                        <p style="color: #f89b28; margin: 8 px 0;">
+                            <strong>Calo:</strong> {row[8]} kcal
+                        </p>
+                        <a href="{link_create(row['Tên món'])}" target="_blank" 
+                        style="text-decoration: none;">
+                            <button style="padding: 10px 15px; color: white; background-color: #f89b28; 
+                                        border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">
                                 Xem công thức
                             </button>
                         </a>
@@ -104,4 +111,5 @@ if display:
                     """, 
                     unsafe_allow_html=True
                 )
-            st.markdown("<br>", unsafe_allow_html=True)
+
+                st.markdown("<br>", unsafe_allow_html=True)
