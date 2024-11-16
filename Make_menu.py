@@ -139,25 +139,24 @@ def create_menu(weight, height, duration, issue):
     return final_menu
 
 ########################################################################################################################################
-col1, col2, col3, col4, col5 = st.columns(5) 
-with col1:
-    if st.button("Tính toán BMI"):
-        bmi = calculate_bmi(weight, height)
-        if bmi:
-            st.write(f"Chỉ số BMI của bạn là: {bmi:.2f}")
-            if age >= 18:
-                classification = classify_bmi(bmi)
-                st.write(f"Phân loại BMI (Người lớn): {classification}")
-            else:
-                classification = classify_bmi(bmi)
-                st.write(f"Phân loại BMI (Trẻ em): {classification}")
+if st.button("Tính toán BMI"):
+    bmi = calculate_bmi(weight, height)
+    if bmi:
+        st.write(f"Chỉ số BMI của bạn là: {bmi:.2f}")
+        if age >= 18:
+            classification = classify_bmi(bmi)
+            st.write(f"Phân loại BMI (Người lớn): {classification}")
         else:
-            st.write("Vui lòng nhập chiều cao hợp lệ để tính toán BMI.")
-with col2:
-    if st.button("Generate Menu"):
-        menu = create_menu(weight, height, duration, issue)
-        st.write("### Suggested Menu:")
-        
+            classification = classify_bmi(bmi)
+            st.write(f"Phân loại BMI (Trẻ em): {classification}")
+    else:
+        st.write("Vui lòng nhập chỉ số hợp lệ để tính toán BMI.")
+
+if st.button("Generate Menu"):
+    menu = create_menu(weight, height, duration, issue)
+    st.write("### Suggested Menu:")
+    bmi = calculate_bmi(weight, height)
+    if bmi:  
         if duration == "1 tuần" or duration == "1 tháng":
             for day_idx, daily_menu in enumerate(menu, start=1):
                 with st.expander(f"Day {day_idx}"):  # Mỗi ngày trong một hộp riêng
@@ -165,15 +164,17 @@ with col2:
                         st.subheader(meal)  # Hiển thị tên bữa ăn (Breakfast, Lunch, Dinner)
                         for dish in dishes:
                             st.write(f"- {dish['name']} ({dish['calories']} cal)")
-                            
+                                
         elif duration == "1 bữa":
             st.subheader("Your Meal:")
             selected_dishes = random.sample(menu, 2)
             for dish in selected_dishes:
                 st.write(f"- {dish['name']} ({dish['calories']} cal)")
-                
+                    
         else:  # Trường hợp "1 ngày"
             for meal, dishes in menu.items():
                 st.subheader(meal)  # Hiển thị tên bữa ăn
                 for dish in dishes:
                     st.write(f"- {dish['name']} ({dish['calories']} cal)")
+    else: 
+        st.write("Vui lòng tính toán BMI trước khi tạo menu.")
