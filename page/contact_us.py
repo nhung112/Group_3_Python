@@ -1,11 +1,20 @@
 import streamlit as st
+from streamlit_extras.switch_page_button import switch_page
 import base64
-from st_pages import add_page_title, get_nav_from_toml
 import webbrowser
 import re
 import smtplib
+from Modules import VisualHandler
 
 
+
+st.set_page_config(
+    page_title="Contact Us",
+    page_icon="☎️",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+)
+VisualHandler.initial()
 st.title("Feedback Form:")
 
 with st.form("my_form"):
