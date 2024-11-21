@@ -142,13 +142,23 @@ def generate_menu(duration, menu):
     
 # Main function to create menu
 def create_menu(weight, height, duration, issue):
+    # Kiểm tra nếu trọng lượng hoặc chiều cao không hợp lệ
+    if weight is None or height is None or weight <= 0 or height <= 0:
+        st.warning("Vui lòng nhập chỉ số phù hợp (chiều cao và cân nặng phải lớn hơn 0).")
+        return None
+
     bmi = calculate_bmi(weight, height)
+    
+    # Kiểm tra nếu BMI không hợp lệ
+    if bmi is None:
+        st.warning("Vui lòng nhập chỉ số hợp lệ để tính toán BMI.")
+        return None
+    
     bmi_category = classify_bmi(bmi)
     base_menu = get_menu_by_bmi(bmi_category)
     condition_filtered_menu = filter_by_health_condition(base_menu, issue)
     final_menu = generate_menu(duration, condition_filtered_menu)
     return final_menu
-
 ########################################################################################################################################
 if st.button("Tính toán BMI"):
     bmi = calculate_bmi(weight, height)

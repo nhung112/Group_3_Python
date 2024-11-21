@@ -67,16 +67,43 @@ class VisualHandler:
     def display_sidebar_features(cls):
         # Các nút chuyển trang
         st.sidebar.title("Chức năng")
+
+        # CSS cho nút
+        button_css = """
+        <style>
+        .sidebar-btn {
+            width: 100%;
+            height: 50px;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            border-radius: 5px;
+            color: #ffffff;
+            background-color: #4CAF50; /* Màu nền xanh lá */
+            border: none;
+            cursor: pointer;
+        }
+        .sidebar-btn:hover {
+            background-color: #45a049; /* Màu khi hover */
+        }
+        </style>
+        """
+        st.markdown(button_css, unsafe_allow_html=True)
+
+        # Các nút chuyển trang
+        st.sidebar.title("Chức năng")
         if st.sidebar.button("Home"):
             switch_page("Home")
         if st.sidebar.button("About Us"):
             switch_page("About Us")
-        if st.sidebar.button("Contact Us"):
-            switch_page("Contact Us")
         if st.sidebar.button("Recipe"):
             switch_page("Recipe")
         if st.sidebar.button("Make Menu"):
             switch_page("Make Menu")
+        if st.sidebar.button("Contact Us"):
+            switch_page("Contact Us")
 
         st.sidebar.divider()
 

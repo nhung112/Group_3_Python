@@ -1,5 +1,4 @@
 
-
 /* Hide default sidebar navigation */
 [data-testid="stSidebarNav"] {display: none !important;}
             
